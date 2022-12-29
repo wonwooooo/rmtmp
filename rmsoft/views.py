@@ -42,17 +42,20 @@ def product(request):
     if request.method == "GET":
         product_list = []
         product = Product.objects.all()
+        Company = Company.objects.all()
+
+        PrimaryKeyRelatedField(read_only=True)
 
         total_product = 0
         for p in product:
             
-            if isinstance(p.p_registerdate, datetime.date):
-                p.p_registerdate = p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S')
+            # if isinstance(p.p_registerdate, datetime.date):
+                # p.p_registerdate = p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S')
 
             product_list.append({"product_id" : p.id, 
                                  "product_name" : p.p_name, 
                                  "product_price" : p.p_price, 
-                                 "product_registerdate" : p.p_registerdate, 
+                                 "product_registerdate" : p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S'), 
                                  "product_company_name" : p.p_company_name})
             # total_product += 1
             total_product = total_product+1
