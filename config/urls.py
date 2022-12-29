@@ -19,7 +19,7 @@ from rmsoft import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('company', views.company),
-    #path('product', views.product),
+    path('product', views.product),
     path('client', views.client),
     #path('order', views.order),
 ]
