@@ -42,9 +42,6 @@ def product(request):
     if request.method == "GET":
         product_list = []
         product = Product.objects.all()
-        Company = Company.objects.all()
-
-        PrimaryKeyRelatedField(read_only=True)
 
         total_product = 0
         for p in product:
