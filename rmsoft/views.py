@@ -14,8 +14,9 @@ def client(request):
 
         total_client = 0
         for c in client:
+            phone_number = c.client_phone_number.replace(c.client_phone_number[-3:-1], '**')
             client_list.append({"clinet_id" : c.id ,
                                 "client_name" : c.client_name,
-                                "clinet_phone" : c.client_phone_number})
+                                "clinet_phone" : phone_number})
             total_client = total_client+1
         return JsonResponse({"total_client" : total_client , "list" : client_list} , safe=False)
