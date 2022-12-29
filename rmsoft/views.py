@@ -31,7 +31,7 @@ def company(request):
         for c in company:
             company_list.append({"company_id" : c.id, 
                                  "company_name" : c.company_name, 
-                                 "company_boos_name" : c.company_boos_name, 
+                                 "company_boos_name" : c.company_boss_name, 
                                  "company_phone_number" : c.company_phone_number})
             total_company = total_company+1
         return JsonResponse({"total_company" : total_company, "list" : company_list}, safe=False)
