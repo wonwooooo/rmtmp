@@ -46,7 +46,7 @@ def product(request):
         total_product = 0
         for p in product:
             
-            if typecheck(p.p_registerdate, datetime.date):
+            if isinstance(p.p_registerdate, datetime.date):
                 p_registerdate = p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S')
 
             product_list.append({"product_id" : p.id, 
