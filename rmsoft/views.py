@@ -19,7 +19,7 @@ def client(request):
             client_list.append({"clinet_id" : c.id ,
                                 "client_name" : c.client_name,
                                 "clinet_phone" : phone_number})
-            total_client = total_client+1
+            total_client += 1
         return JsonResponse({"total_client" : total_client , "list" : client_list} , safe=False)
 
 
@@ -30,11 +30,11 @@ def company(request):
 
         total_company = 0
         for c in company:
-            company_list.append({#"company_id" : c.id, 
+            company_list.append({"company_id" : c.id, 
                                  "company_name" : c.company_name, 
                                  "company_boos_name" : c.company_boss_name, 
                                  "company_phone_number" : c.company_phone_number})
-            total_company = total_company+1
+            total_company += 1
         return JsonResponse({"total_company" : total_company, "list" : company_list}, safe=False)
 
 
@@ -45,17 +45,13 @@ def product(request):
 
         total_product = 0
         for p in product:
-            
-            # if isinstance(p.p_registerdate, datetime.date):
-                # p.p_registerdate = p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S')
-
             product_list.append({"product_id" : p.id, 
                                  "product_name" : p.p_name, 
                                  "product_price" : p.p_price, 
                                  "product_registerdate" : p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S'), 
                                  "product_company_name" : p.p_company_name})
-            # total_product += 1
-            total_product = total_product+1
+
+            total_product += 1
         return JsonResponse({"total_product" : total_product, "list" : product_list}, safe=False)
 
 
