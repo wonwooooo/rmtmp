@@ -43,6 +43,8 @@ def product(request):
         product_list = []
         product = Product.objects.all()
 
+        print(product)
+
         total_product = 0
         for p in product:
             product_list.append({"product_id" : p.id, 
