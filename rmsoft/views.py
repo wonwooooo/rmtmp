@@ -49,7 +49,8 @@ def product(request):
                                  "product_price" : p.p_price, 
                                  "product_registerdate" : p.p_registerdate, 
                                  "product_company_name" : p.p_company_name})
-            total_product += 1
+            # total_product += 1
+            total_product = total_product+1
         return JsonResponse({"total_product" : total_product, "list" : product_list}, safe=False)
 
 
