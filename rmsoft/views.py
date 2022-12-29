@@ -45,10 +45,10 @@ def product(request):
         total_product = 0
         for p in product:
             product_list.append({"product_id" : p.id, 
-                                 "product_name" : p.product_name, 
-                                 "product_price" : p.product_price, 
-                                 "product_registerdate" : p.product_registerdate, 
-                                 "product_company_name" : p.product_company_name})
+                                 "product_name" : p.p_name, 
+                                 "product_price" : p.p_price, 
+                                 "product_registerdate" : p.p_registerdate, 
+                                 "product_company_name" : p.p_company_name})
             total_product += 1
         return JsonResponse({"total_product" : total_product, "list" : product_list}, safe=False)
 
