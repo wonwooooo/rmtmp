@@ -5,7 +5,7 @@ from django.db import models
 class Company(models.Model):
     company_name = models.CharField(max_length=200)
     company_boss_name = models.CharField(max_length=200)
-    company_phone_number = models.IntegerField()
+    company_phone_number = models.CharField(max_length=200)
 
 class Product(models.Model):
     p_name = models.CharField(max_length=200)
@@ -15,7 +15,7 @@ class Product(models.Model):
 
 class Client(models.Model):
     client_name = models.CharField(max_length=200)
-    client_phone_number = models.IntegerField()
+    client_phone_number = models.CharField(max_length=200)
 
 class Order(models.Model):
     o_p_id = models.ForeignKey(Product, on_delete=models.CASCADE)
