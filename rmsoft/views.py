@@ -5,6 +5,7 @@ from django.shortcuts import render
 import sqlite3
 from .models import Company, Client, Product, Order
 from django.http import JsonResponse, HttpResponse, Http404
+import datetime, json
 
 
 def client(request):
@@ -44,6 +45,10 @@ def product(request):
 
         total_product = 0
         for p in product:
+            
+            if typecheck(p.p_registerdate, datetime.date):
+                p_registerdate = p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S')
+
             product_list.append({"product_id" : p.id, 
                                  "product_name" : p.p_name, 
                                  "product_price" : p.p_price, 
@@ -52,6 +57,7 @@ def product(request):
             # total_product += 1
             total_product = total_product+1
         return JsonResponse({"total_product" : total_product, "list" : product_list}, safe=False)
+
 
 
 # def order(request):
