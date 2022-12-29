@@ -3,19 +3,11 @@ from django.db import models
 # Create your models here.
 
 class Company(models.Model):
-    company_name = models.CharField(max_length=200)
+    company_name = models.CharField(max_length=200, primary_key=True)
     company_boss_name = models.CharField(max_length=200)
     company_phone_number = models.CharField(max_length=200)
 
-    objects = CompanyName()
-
-    class Meta:
-        unique_together = [['company_name']]
-
-
-class CompanyName(models.Model):
-    def get_by_natural_key(self, company_name):
-        return self.get(company_name=company_name)
+    def __str__
 
 class Product(models.Model):
     p_name = models.CharField(max_length=200)
