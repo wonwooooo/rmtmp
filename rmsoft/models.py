@@ -7,7 +7,7 @@ class Company(models.Model):
     company_boss_name = models.CharField(max_length=200)
     company_phone_number = models.CharField(max_length=200)
 
-    def __str__
+    
 
 class Product(models.Model):
     p_name = models.CharField(max_length=200)
