@@ -7,6 +7,8 @@ from .models import Company, Client, Product, Order
 from django.http import JsonResponse, HttpResponse, Http404
 import datetime, json
 
+from django.core import serializers
+
 
 def client(request):
     if request.method == "GET":
@@ -38,23 +40,33 @@ def company(request):
         return JsonResponse({"total_company" : total_company, "list" : company_list}, safe=False)
 
 
+# def product(request):
+#     if request.method == "GET":
+#         product_list = []
+#         product = Product.objects.all()
+
+#         total_product = 0
+#         for p in product:
+#             product_list.append({"product_id" : p.id, 
+#                                  "product_name" : p.p_name, 
+#                                  "product_price" : p.p_price, 
+#                                  "product_registerdate" : p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S'), 
+#                                  "product_company_name" : p.p_company_name})
+
+#             total_product += 1
+#         return JsonResponse({"total_product" : total_product, "list" : product_list}, safe=False)
+
+
 def product(request):
     if request.method == "GET":
         product_list = []
         product = Product.objects.all()
 
-        print(product)
+        data = serializers.serialize("json", product)
+        response = HttpResponse(content=data)
 
-        total_product = 0
-        for p in product:
-            product_list.append({"product_id" : p.id, 
-                                 "product_name" : p.p_name, 
-                                 "product_price" : p.p_price, 
-                                 "product_registerdate" : p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S'), 
-                                 "product_company_name" : p.p_company_name})
+    return response
 
-            total_product += 1
-        return JsonResponse({"total_product" : total_product, "list" : product_list}, safe=False)
 
 
 
@@ -62,9 +74,11 @@ def product(request):
 #     if request.method == "GET":
 #         order_list = []
 #         order = Order.objects.all()
+#         product = Product.objects.all()
+#         client = Client.objects.all()
 
 #         for o in order:
-#             order_list.append({컬럼1 : o.id
+#             order_list.append({"o_p_id" : o_p_id,
 #                                 컬럼2 : 컬럼이름값,실제값})
 #             total_order += total_order
 #         return JsonResponse({고정된형태})
