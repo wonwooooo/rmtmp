@@ -40,37 +40,34 @@ def company(request):
         return JsonResponse({"total_company" : total_company, "list" : company_list}, safe=False)
 
 
-# def product(request):
-#     if request.method == "GET":
-#         product_list = []
-#         product = Product.objects.all()
-
-#         total_product = 0
-#         for p in product:
-#             product_list.append({"product_id" : p.id, 
-#                                  "product_name" : p.p_name, 
-#                                  "product_price" : p.p_price, 
-#                                  "product_registerdate" : p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S'), 
-#                                  "product_company_name" : p.p_company_name})
-
-#             total_product += 1
-#         return JsonResponse({"total_product" : total_product, "list" : product_list}, safe=False)
-
-
 def product(request):
     if request.method == "GET":
         product_list = []
         product = Product.objects.all()
 
-        # product_list = 0
-        # for p in product:
-        #     product_list.append({"product"})
+        total_product = 0
+        for p in product:
+            product_list.append({"product_id" : p.id, 
+                                 "product_name" : p.p_name, 
+                                 "product_price" : p.p_price, 
+                                 "product_registerdate" : p.p_registerdate.strftime('%Y-%m-%d-%H-%M-%S'), 
+                                 "product_company_name" : p.p_company_name_id})
 
-        data = serializers.serialize("json", product)
-        response = HttpResponse(content=data)
+            total_product += 1
+        return JsonResponse({"total_product" : total_product, "list" : product_list}, safe=False)
 
-    return response
 
+# def product(request):
+#     if request.method == "GET":
+#         product_list = []
+#         product = Product.objects.all()
+
+#         data = serializers.serialize("json", product)
+#         response = HttpResponse(content=data)
+
+#     return response
+# https://darrengwon.tistory.com/480
+# https://dibrary.tistory.com/137
 
 
 
@@ -86,3 +83,7 @@ def product(request):
 #                                 컬럼2 : 컬럼이름값,실제값})
 #             total_order += total_order
 #         return JsonResponse({고정된형태})
+
+# def order(request):
+#     if request.method == "GET":
+#         order = Order.objects.all()
