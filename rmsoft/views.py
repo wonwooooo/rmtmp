@@ -57,17 +57,19 @@ def company(request):
 #         return JsonResponse({"total_product" : total_product, "list" : product_list}, safe=False)
 
 
+@api_view(["GET"])
 def product(request):
-    if request.method == "GET":
-        product_list = []
-        product = Product.objects.all()
+    # if request.method == "GET":
+    product_list = []
+    product = Product.objects.all()
 
         # product_list = 0
         # for p in product:
         #     product_list.append({"product"})
 
-        data = serializers.serialize("json", product)
-        response = HttpResponse(content=data)
+    data = serializers.serialize("json", product)
+    response = HttpResponse(content=data)
+    # response = JsonResponse({"total_product" : total_product, "list" : product_list}, safe=False)
 
     return response
 
