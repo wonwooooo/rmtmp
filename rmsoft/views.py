@@ -8,6 +8,9 @@ from django.http import JsonResponse, HttpResponse, Http404
 import datetime, json
 
 from django.core import serializers
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import ProductSerializer
 
 
 def client(request):
