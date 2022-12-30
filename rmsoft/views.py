@@ -62,8 +62,12 @@ def product(request):
         product_list = []
         product = Product.objects.all()
 
+        # product_list = 0
+        # for p in product:
+        #     product_list.append({"product"})
+
         data = serializers.serialize("json", product)
-        response = HttpResponse(content=data)
+        response = JsonResponse(content=data)
 
     return response
 
