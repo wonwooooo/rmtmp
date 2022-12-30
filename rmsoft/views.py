@@ -67,7 +67,7 @@ def product(request):
         #     product_list.append({"product"})
 
         data = serializers.serialize("json", product)
-        response = JsonResponse(content=data)
+        response = HttpResponse(content=data)
 
     return response
 
